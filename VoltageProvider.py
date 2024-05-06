@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class TransformerCurrentProvider(ABC):
+class VoltageProvider(ABC):
     @abstractmethod
-    def GetCurrent(self):
+    def GetVoltage(self):
         return 0.1

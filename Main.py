@@ -1,20 +1,22 @@
 import platform
 import time
-from FakeTransformerCurrentProvider import FakeTransformerCurrentProvider
-from TransformerCurrentReporter import TransformerCurrentReporter
+from FakeVoltageProvider import FakeVoltageProvider
+from VoltageReporter import VoltageReporter
 
-TransformerReportWebPage = "http://desktop-pcqmqk8:8080/xwiki/bin/view/Transformer State Reporter/AddSensorReading"
+TransformerReportWebPage = "http://37.229.48.234:8080/xwiki/bin/view/Transformer State Reporter/AddSensorReading"
+
+FakeVoltageValueToReport = 11
 
 def main():
     if platform.system() == "Windows":
-        fakeTransformerCurrentProvider = FakeTransformerCurrentProvider()
-        transformerCurrentReporter = TransformerCurrentReporter(fakeTransformerCurrentProvider, TransformerReportWebPage)
+        fakeVoltageProvider = FakeVoltageProvider(FakeVoltageValueToReport)
+        voltageReporter = VoltageReporter(fakeVoltageProvider, TransformerReportWebPage)
     elif platform.system() == "Linux":
-        fakeTransformerCurrentProvider = FakeTransformerCurrentProvider()
-        transformerCurrentReporter = TransformerCurrentReporter(fakeTransformerCurrentProvider, TransformerReportWebPage)
+        fakeVoltageProvider = FakeVoltageProvider(FakeVoltageValueToReport)
+        voltageReporter = VoltageReporter(fakeVoltageProvider, TransformerReportWebPage)
 
     while True:
-        transformerCurrentReporter.ReportCurrent()
+        voltageReporter.ReportVoltage()
         time.sleep(1)
 
 if __name__ == '__main__':

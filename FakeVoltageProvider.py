@@ -7,3 +7,6 @@ class FakeVoltageProvider(VoltageProvider):
 
     def GetVoltage(self):
         return self.ValueToReturn
+
+    def SetVoltage(self, NewValue):
+        self.ValueToReturn = NewValue

@@ -10,8 +10,6 @@ from CurrentReporter import CurrentReporter
 
 TransformerReportWebPage = "http://37.229.48.234:8080/xwiki/bin/view/Transformer State Reporter/AddSensorReading"
 
-StartFakeVoltageValueToReport = 11
-
 window = tk.Tk()
 window.title("Voltage Reporter")
 
@@ -65,7 +63,7 @@ def main():
     global currentReporter
     if platform.system() == "Windows":
         print("Running on Windows")
-        voltageProvider = FakeADS1115(StartFakeVoltageValueToReport)
+        voltageProvider = FakeADS1115()
         currentReporter = CurrentReporter(voltageProvider, TransformerReportWebPage)
     elif platform.system() == "Linux":
         from RealADS1115 import RealADS1115
@@ -74,11 +72,13 @@ def main():
         currentReporter = CurrentReporter(voltageProvider, TransformerReportWebPage)
 
     while True:
-        window.update()
         if platform.system() == "Windows":
             voltageProvider.P0Voltage = float(random.uniform(0, 5))
             voltageProvider.P1Voltage = float(random.uniform(0, 5))
             voltageProvider.P2Voltage = float(random.uniform(0, 5))
             voltageProvider.P3Voltage = float(random.uniform(0, 5))
+
+        window.update()
+
 if __name__ == '__main__':
     main()

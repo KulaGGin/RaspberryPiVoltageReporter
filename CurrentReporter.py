@@ -15,7 +15,7 @@ class CurrentReporter():
         rawADSCurrentReading = self.ADS1115.GetVoltageP1()
         actualCurrent = interp(rawADSCurrentReading, CurrentSensorOutputCurrentMinMax, CurrentSensorInputCurrentMinMax)
         actualCurrent = round(actualCurrent, 2)
-        recording = {'voltage': actualVoltage, 'current': actualCurrent, 'reading': actualVoltage, 'xpage': 'plain', 'outputSyntax': 'plain'}
+        recording = {'voltage': actualVoltage, 'current': actualCurrent, 'xpage': 'plain', 'outputSyntax': 'plain'}
         print(recording)
         response = requests.get(self.url, params=recording, verify=True)
         print(f"Made a request to page: {self.url}")

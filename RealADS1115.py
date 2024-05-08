@@ -24,17 +24,17 @@ class RealADS1115(IADS1115):
         self.voltageSensorOutputVoltageMinMax = [0, 5]
 
     def GetVoltageP0(self):
-        adsVoltageReading = self.P0Channel.voltage;
+        adsVoltageReading = self.P0Channel.voltage
         return adsVoltageReading
 
     def GetVoltageP1(self):
-        adsVoltageReading = self.P1Channel.voltage;
+        adsVoltageReading = self.P1Channel.voltage
         return adsVoltageReading
 
     def GetVoltageP2(self):
-        adsVoltageReading = self.P2Channel.voltage;
+        adsVoltageReading = self.P2Channel.voltage
         return adsVoltageReading
 
     def GetVoltageP3(self):
-        adsVoltageReading = self.P3Channel.voltage;
+        adsVoltageReading = self.P3Channel.voltage
         return adsVoltageReading

@@ -1,21 +1,19 @@
 import requests
 from numpy import interp
+from SensorsConfiguration import *
 
 class CurrentReporter():
     def __init__(self, ADS1115, url):
         self.url = url
         self.ADS1115 = ADS1115
-        self.VoltageSensorInputCurrentMinMax = [0, 25]
-        self.VoltageSensorOutputCurrentMinMax = [0, 5]
-        self.CurrentSensorInputCurrentMinMax = [0, 200]
-        self.CurrentSensorOutputCurrentMinMax = [0, 5]
+
     def Report(self):
         rawADSVoltageReading = self.ADS1115.GetVoltageP0()
-        actualVoltage = interp(rawADSVoltageReading, self.VoltageSensorOutputCurrentMinMax, self.VoltageSensorInputCurrentMinMax)
+        actualVoltage = interp(rawADSVoltageReading, VoltageSensorOutputVoltageMinMax, VoltageSensorInputVoltageMinMax)
         actualVoltage = round(actualVoltage, 2)
 
         rawADSCurrentReading = self.ADS1115.GetVoltageP1()
-        actualCurrent = interp(rawADSCurrentReading, self.CurrentSensorOutputCurrentMinMax, self.CurrentSensorInputCurrentMinMax)
+        actualCurrent = interp(rawADSCurrentReading, CurrentSensorOutputCurrentMinMax, CurrentSensorInputCurrentMinMax)
         actualCurrent = round(actualCurrent, 2)
         recording = {'voltage': actualVoltage, 'current': actualCurrent, 'reading': actualVoltage, 'xpage': 'plain', 'outputSyntax': 'plain'}
         print(recording)

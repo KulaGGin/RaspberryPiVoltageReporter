@@ -27,7 +27,7 @@ def reportVoltage():
     DateLabel2.config(text=datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
     ActualVoltageLabel2.config(text=f"{reportedVoltage}V")
     ActualCurrentLabel2.config(text=f"{reportedCurrent}A")
-    window.after(1000, reportVoltage)
+    window.after(10000, reportVoltage)
 
 def onStartButtonClicked():
     global ShouldReportReadings
@@ -58,12 +58,6 @@ ActualCurrentLabel2.grid(row=3, column=1)
 
 StartButton.grid(row=4, column=0)
 StopButton.grid(row=4, column=1)
-
-voltageSensorInputVoltageMinMax = [0, 25]
-voltageSensorOutputVoltageMinMax = [0, 5]
-
-currentSensorInputCurrentMinMax = [0, 25]
-currentSensorOutputCurrentMinMax = [0, 5]
 
 
 def main():

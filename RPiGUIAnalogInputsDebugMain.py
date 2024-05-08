@@ -20,7 +20,7 @@ DateLabel2 = None
 voltageSensorInputVoltageMinMax = [0, 25]
 voltageSensorOutputVoltageMinMax = [0, 5]
 
-currentSensorInputCurrentMinMax = [0, 200]
+currentSensorInputCurrentMinMax = [0, 220]
 currentSensorOutputCurrentMinMax = [0, 5]
 
 def reportVoltage():

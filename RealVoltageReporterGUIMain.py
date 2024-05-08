@@ -26,7 +26,7 @@ def reportVoltage():
     (reportedVoltage, reportedCurrent) = currentReporter.Report()
     DateLabel2.config(text=datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
     ActualVoltageLabel2.config(text=f"{reportedVoltage}V")
-    ActualCurrentLabel2.config(text=f"{reportedCurrent}V")
+    ActualCurrentLabel2.config(text=f"{reportedCurrent}A")
     window.after(1000, reportVoltage)
 
 def onStartButtonClicked():

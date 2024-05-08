@@ -30,4 +30,4 @@ while True:
     print("ADS A1 value: ", CurrentSensorChannel.value, "ADS A1 voltage: ", CurrentSensorChannel.voltage)
     print("Actual Voltage: ", actualVoltage)
     print("Actual Current: ", actualCurrent)
-    time.sleep(0.2)
+    time.sleep(5)

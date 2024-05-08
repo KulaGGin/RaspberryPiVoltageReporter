@@ -5,8 +5,8 @@ from datetime import datetime
 
 from numpy.core.defchararray import isnumeric
 
-from FakeVoltageProvider import FakeVoltageProvider
-from VoltageReporter import VoltageReporter
+from FakeADS1115 import FakeADS1115
+from CurrentReporter import CurrentReporter
 
 
 TransformerReportWebPage = "http://37.229.48.234:8080/xwiki/bin/view/Transformer State Reporter/AddSensorReading"
@@ -23,14 +23,14 @@ VoltageLabel.grid(row=0, column=0)   # grid dynamically divides the space in a g
 VoltageEntry.grid(row=0, column=1)   # and arranges widgets accordingly
 
 ShouldReportReadings = False
-voltageReporter = None
+currentReporter = None
 DateLabel2 = None
 
 def reportVoltage():
     if ShouldReportReadings == False:
         return
 
-    voltageReporter.ReportVoltage()
+    currentReporter.ReportVoltage()
     DateLabel2.config(text=datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
     window.after(1000, reportVoltage)
 def onStartButtonClicked():
@@ -57,13 +57,13 @@ StopButton.grid(row=2, column=1)
 
 def main():
     global fakeVoltageProvider
-    global voltageReporter
+    global currentReporter
     if platform.system() == "Windows":
-        fakeVoltageProvider = FakeVoltageProvider(StartFakeVoltageValueToReport)
-        voltageReporter = VoltageReporter(fakeVoltageProvider, TransformerReportWebPage)
+        fakeVoltageProvider = FakeADS1115(StartFakeVoltageValueToReport)
+        voltageReporter = CurrentReporter(fakeVoltageProvider, TransformerReportWebPage)
     elif platform.system() == "Linux":
-        fakeVoltageProvider = FakeVoltageProvider(StartFakeVoltageValueToReport)
-        voltageReporter = VoltageReporter(fakeVoltageProvider, TransformerReportWebPage)
+        fakeVoltageProvider = FakeADS1115(StartFakeVoltageValueToReport)
+        voltageReporter = CurrentReporter(fakeVoltageProvider, TransformerReportWebPage)
 
     while True:
         window.update()
@@ -74,7 +74,10 @@ def main():
         except ValueError:
             return
 
-        fakeVoltageProvider.SetVoltage(float(newFakeValue))
+        voltageProvider.P0Voltage = float(random.uniform(1, 5))
+        voltageProvider.P1Voltage = float(random.uniform(1, 5))
+        voltageProvider.P2Voltage = float(random.uniform(1, 5))
+        voltageProvider.P3Voltage = float(random.uniform(1, 5))
 
 if __name__ == '__main__':
     main()

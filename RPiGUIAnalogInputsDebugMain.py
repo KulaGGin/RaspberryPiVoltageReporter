@@ -31,8 +31,8 @@ def reportVoltage():
 
     P0Voltage = voltageProvider.GetVoltageP0()
     P1Voltage = voltageProvider.GetVoltageP1()
-    P2Voltage = voltageProvider.GetVoltageP1()
-    P3Voltage = voltageProvider.GetVoltageP1()
+    P2Voltage = voltageProvider.GetVoltageP2()
+    P3Voltage = voltageProvider.GetVoltageP3()
 
     actualVoltage = interp(P0Voltage, voltageSensorOutputVoltageMinMax, voltageSensorInputVoltageMinMax)
     actualCurrent = interp(P1Voltage, currentSensorOutputCurrentMinMax, currentSensorInputCurrentMinMax)

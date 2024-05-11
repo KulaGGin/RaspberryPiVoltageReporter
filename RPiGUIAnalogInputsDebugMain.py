@@ -7,12 +7,13 @@ import random
 
 from FakeADS1115 import FakeADS1115
 
-TransformerReportWebPage = "http://37.229.48.234:8080/xwiki/bin/view/Transformer State Reporter/AddSensorReading"
-
 StartFakeVoltageValueToReport = 11
 
 window = tk.Tk()
-window.title("Voltage Reporter")
+window.title("Sensors Display")
+window.minsize(260, 180)
+window.maxsize(260, 180)
+window.columnconfigure(1, minsize=128)
 
 ShouldReportReadings = False
 DateLabel2 = None
@@ -49,6 +50,9 @@ def reportVoltage():
 
 def onStartButtonClicked():
     global ShouldReportReadings
+
+    if ShouldReportReadings:
+        return
     ShouldReportReadings = True
     window.after(1000, reportVoltage)
 
@@ -57,29 +61,29 @@ def onStopButtonClicked():
     ShouldReportReadings = False
 
 
-DateLabel1 = tk.Label(window, text="Last time values reported:")
-DateLabel2 = tk.Label(window, text=datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
+DateLabel1 = tk.Label(window, text="Date & time values read:")
+DateLabel2 = tk.Label(window, text="Not yet")
 DateLabel1.grid(row=1, column=0)
 DateLabel2.grid(row=1, column=1)
 StartButton = tk.Button(window, text="Start", command=onStartButtonClicked)
 StopButton = tk.Button(window, text="Stop", command=onStopButtonClicked)
 
-P0VoltageReadingLabel1 = tk.Label(window, text="Voltage P0 Reading:")
+P0VoltageReadingLabel1 = tk.Label(window, text="Voltage A0 Reading:")
 P0VoltageReadingLabel2 = tk.Label(window, text="N/A")
 P0VoltageReadingLabel1.grid(row=2, column=0)
 P0VoltageReadingLabel2.grid(row=2, column=1)
 
-P1VoltageReadingLabel1 = tk.Label(window, text="Voltage P1 Reading:")
+P1VoltageReadingLabel1 = tk.Label(window, text="Voltage A1 Reading:")
 P1VoltageReadingLabel2 = tk.Label(window, text="N/A")
 P1VoltageReadingLabel1.grid(row=3, column=0)
 P1VoltageReadingLabel2.grid(row=3, column=1)
 
-P2VoltageReadingLabel1 = tk.Label(window, text="Voltage P2 Reading:")
+P2VoltageReadingLabel1 = tk.Label(window, text="Voltage A2 Reading:")
 P2VoltageReadingLabel2 = tk.Label(window, text="N/A")
 P2VoltageReadingLabel1.grid(row=4, column=0)
 P2VoltageReadingLabel2.grid(row=4, column=1)
 
-P3VoltageReadingLabel1 = tk.Label(window, text="Voltage P3 Reading:")
+P3VoltageReadingLabel1 = tk.Label(window, text="Voltage A3 Reading:")
 P3VoltageReadingLabel2 = tk.Label(window, text="N/A")
 P3VoltageReadingLabel1.grid(row=5, column=0)
 P3VoltageReadingLabel2.grid(row=5, column=1)

@@ -3,8 +3,7 @@ import random
 import time
 from FakeADS1115 import FakeADS1115
 from CurrentReporter import CurrentReporter
-
-TransformerReportWebPage = "http://37.229.48.234:8080/xwiki/bin/view/Transformer State Reporter/AddSensorReading"
+from TransformerReportWebPage import *
 
 def main():
     global currentReporter

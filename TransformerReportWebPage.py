@@ -1,0 +1,1 @@
+TransformerReportWebPage = "http://loadinsight.net/xwiki/bin/view/Transformer State Reporter/AddSensorReading"

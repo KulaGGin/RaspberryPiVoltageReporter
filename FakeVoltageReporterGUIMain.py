@@ -2,6 +2,7 @@ import platform
 import time
 import tkinter as tk
 from datetime import datetime
+from TransformerReportWebPage import *
 
 from numpy.core.defchararray import isnumeric
 
@@ -9,13 +10,12 @@ from FakeADS1115 import FakeADS1115
 from CurrentReporter import CurrentReporter
 import random
 
-TransformerReportWebPage = "http://37.229.48.234:8080/xwiki/bin/view/Transformer State Reporter/AddSensorReading"
-
 StartFakeVoltageValueToReport = 1.5
 StartFakeCurrentValueToReport = 2.6
 
 window = tk.Tk()
 window.title("Fake Voltage Reporter")
+
 
 VoltageLabel = tk.Label(window, text="Voltage to send:")
 VoltageEntry = tk.Entry(window, width=16)
@@ -44,6 +44,9 @@ def reportVoltage():
     window.after(1000, reportVoltage)
 def onStartButtonClicked():
     global ShouldReportReadings
+
+    if ShouldReportReadings:
+        return
     ShouldReportReadings = True
     window.after(1000, reportVoltage)
 

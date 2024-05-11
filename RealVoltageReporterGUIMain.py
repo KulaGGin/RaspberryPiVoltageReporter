@@ -6,12 +6,13 @@ import random
 
 from FakeADS1115 import FakeADS1115
 from CurrentReporter import CurrentReporter
-
-
-TransformerReportWebPage = "http://37.229.48.234:8080/xwiki/bin/view/Transformer State Reporter/AddSensorReading"
+from TransformerReportWebPage import *
 
 window = tk.Tk()
 window.title("Voltage Reporter")
+window.minsize(268, 94)
+window.maxsize(268, 94)
+window.columnconfigure(1, minsize=128)
 
 ShouldReportReadings = False
 currentReporter = None
@@ -29,6 +30,8 @@ def reportVoltage():
 
 def onStartButtonClicked():
     global ShouldReportReadings
+    if ShouldReportReadings:
+        return
     ShouldReportReadings = True
     reportVoltage()
 

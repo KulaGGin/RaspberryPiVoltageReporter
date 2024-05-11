@@ -1,1 +1,1 @@
-TransformerReportWebPage = "http://loadinsight.net/xwiki/bin/view/Transformer State Reporter/AddSensorReading"
+TransformerReportWebPage = "http://37.229.48.234/xwiki/bin/view/Transformer State Reporter/AddSensorReading"

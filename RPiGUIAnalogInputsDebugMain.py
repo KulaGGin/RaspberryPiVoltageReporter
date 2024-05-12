@@ -11,8 +11,7 @@ StartFakeVoltageValueToReport = 11
 
 window = tk.Tk()
 window.title("Sensors Display")
-window.minsize(260, 180)
-window.maxsize(260, 180)
+window.resizable(False, False)
 window.columnconfigure(1, minsize=128)
 
 ShouldReportReadings = False

@@ -10,8 +10,7 @@ from TransformerReportWebPage import *
 
 window = tk.Tk()
 window.title("Voltage Reporter")
-window.minsize(268, 94)
-window.maxsize(268, 94)
+window.resizable(False, False)
 window.columnconfigure(1, minsize=128)
 
 ShouldReportReadings = False

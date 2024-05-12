@@ -1,3 +1,4 @@
+
 cd "${0%/*}"
-source ~/.env/bin/activate
+. ~/.env/bin/activate
 python "./RealVoltageReporterGUIMain.py"

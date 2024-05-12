@@ -17,7 +17,7 @@ class CurrentReporter():
         actualCurrent = round(actualCurrent, 2)
         recording = {'voltage': actualVoltage, 'current': actualCurrent, 'xpage': 'plain', 'outputSyntax': 'plain'}
         print(recording)
-        response = requests.get(self.url, params=recording, verify=True)
+        response = requests.get(self.url, params=recording, verify=True, auth=("RaspberryPi", "Dq8pBh0Q"))
         print(f"Made a request to page: {self.url}")
         print(f"Response code is: {response}")
         print(f"Response content is: {response.text}")
